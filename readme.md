@@ -6,8 +6,9 @@
 
 ### 概述
 
-FSRL通过强化学习技术让动态切换策略的设想在金融市场上成为了可能，将把多因子模型推进到多策略模型的时代
+FSRL通过强化学习技术让动态切换策略的设想在金融市场上成为了可能，将把多因子模型推进到多策略模型的时代，我们可以将多个策略交给FSRL进行训练，给训练好的模型导入新数据后，模型会在当前数据下自动选择用哪种策略。
 
+![FSRL_process.png](img%2FFSRL_process.png)
 ### 文件结构
 
 整个框架分为几个模块：algomodel，analysis，backtest，env，config，logger，data，mainlab，strategy。

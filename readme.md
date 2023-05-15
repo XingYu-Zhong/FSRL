@@ -4,11 +4,11 @@
 
 金融策略强化学习（FSRL）是第一个用于动态切换多种策略的开源框架。
 
-概述
+### 概述
 
 FSRL通过强化学习技术让动态切换策略的设想在金融市场上成为了可能，将把多因子模型推进到多策略模型的时代
 
-文件结构
+### 文件结构
 
 整个框架分为几个模块：algomodel，analysis，backtest，env，config，logger，data，mainlab，strategy。
 
@@ -52,3 +52,20 @@ mianlab：
 strategy：
 
 1. 策略实现模块，多个策略放到这里进行实现，去调用回测框架里进行回测 
+
+### Contributors
+
+Thank you!
+
+
+### Sponsorship
+
+Welcome gift money to support FSRL.
+
+Wechat：zxy_de_weixin
+
+## LICENSE
+
+MIT License
+
+**Disclaimer: We are sharing codes for academic purpose under the MIT education license. Nothing herein is financial advice, and NOT a recommendation to trade real money. Please use common sense and always first consult a professional before trading or investing.**

@@ -60,7 +60,7 @@ Thank you!
 
 ### Sponsorship
 
-Welcome gift money to support FSRL.
+欢迎礼物用于支持FSRL。
 
 Wechat：zxy_de_weixin
 
@@ -68,4 +68,4 @@ Wechat：zxy_de_weixin
 
 MIT License
 
-**Disclaimer: We are sharing codes for academic purpose under the MIT education license. Nothing herein is financial advice, and NOT a recommendation to trade real money. Please use common sense and always first consult a professional before trading or investing.**
+**免责声明：我们正在根据麻省理工学院教育许可证共享用于学术目的的代码。此处没有任何财务建议，也不是交易真实货币的建议。请使用常识，并在交易或投资之前始终首先咨询专业人士。**

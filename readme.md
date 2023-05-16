@@ -13,7 +13,7 @@
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) 
 
 ![cat](img/FSRL-cat.png#pic_center)
-<style >
+<style>
     img[alt="cat"]{
         width:100px;
     }

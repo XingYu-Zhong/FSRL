@@ -1,4 +1,4 @@
-# FSRL:Financial Strategy Reinforcement Learning.🔥
+# 📈 FSRL:Financial Strategy Reinforcement Learning.🤖
 
 
 
@@ -10,24 +10,31 @@
   </a>
 </p>
 
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) 
 
 ![cat](img/FSRL-cat.png#pic_center)
 
-金融策略强化学习（FSRL）是第一个用于动态切换多种策略的开源框架。
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) 
+
+金融策略强化学习（FSRL）是第一个用于动态切换多种策略的开源框架。🔥
 
 ### 概述
 
 FSRL通过强化学习技术让动态切换策略的设想在金融市场上成为了可能，将把多因子模型推进到多策略模型的时代，我们可以将多个策略交给FSRL进行训练，给训练好的模型导入新数据后，模型会在当前数据下自动选择用哪种策略。
 
 ![FSRL_process.png](img%2FFSRL_process.png)
+
+
+FSRL有三层：策略，代理，市场环境层，策略层与市场环境进行交互，提供策略在回测中的数据，并以此作为依据给出奖励，市场环境与代理层进行交互，市场环境层提供观察数据，代理层根据观察数据给出决策动作，市场环境层通过代理的动作和回测的数据计算奖励返回代理层，代理层得到奖励继续优化决策动作，以此行成正向循环。
+
+![FSRL-Architecture.png](img%2FFSRL-Architecture.png)
+
 ### 文件结构
 
 整个框架分为几个模块：algomodel，analysis，backtest，env，config，logger，data，mainlab，strategy。
 
 algomodel：
 
-1. 管理RL算法模型，设想可以接入多个方面的算法，比如SB3，tensorforce，RlegantRL，自己构造的算法库，目前实现了SB3里的算法
+1. 管理RL算法模型，设想可以接入多个方面的算法，比如stable-baselines3，tensorforce，RlegantRL，自己构造的算法库，目前实现了SB3里的算法
 2. 可以选择算法以及具体算法参数，设定默认参数
 
 analysis：

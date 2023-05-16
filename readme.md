@@ -13,11 +13,7 @@
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) 
 
 ![cat](img/FSRL-cat.png#pic_center)
-<style>
-    img[alt="cat"]{
-        width:100px;
-    }
-</style>
+
 金融策略强化学习（FSRL）是第一个用于动态切换多种策略的开源框架。
 
 ### 概述

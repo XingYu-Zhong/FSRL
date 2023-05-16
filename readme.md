@@ -1,5 +1,12 @@
 # FSRL:Financial Strategy Reinforcement Learning.🔥
 
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=python,github,pytorch,tensorflow" />
+  </a>
+</p>
+
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) 
 
 金融策略强化学习（FSRL）是第一个用于动态切换多种策略的开源框架。
@@ -63,7 +70,9 @@ Thank you!
 
 欢迎礼物用于支持FSRL。
 
-Wechat：zxy_de_weixin
+Network: USDT-TRC20 网络： USDT-TRC20
+
+![USDT-TRC20.jpg](img%2FUSDT-TRC20.jpg)
 
 ## LICENSE
 

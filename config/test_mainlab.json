@@ -1,0 +1,435 @@
+{
+  "h000905DQN5Strategy": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["h000905"],
+        "marketCountry": "zh",
+        "balance": "10000000",
+        "strategyNum": "5",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi_empty_vwap",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "20",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.1",
+        "exploration_fraction": "0.03"
+      }
+    }
+  },
+  "h000016DQN5Strategy": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["h000016"],
+        "marketCountry": "zh",
+        "balance": "10000000",
+        "strategyNum": "5",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi_empty_vwap",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "20",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.1",
+        "exploration_fraction": "0.03"
+      }
+    }
+  },
+  "h000300DQN5Strategy": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["h000300"],
+        "marketCountry": "zh",
+        "balance": "10000000",
+        "strategyNum": "5",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi_empty_vwap",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "20",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.1",
+        "exploration_fraction": "0.03"
+      }
+    }
+  },
+  "hDJIADQN5Strategy": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["hDJI"],
+        "marketCountry": "us",
+        "balance": "10000000",
+        "strategyNum": "5",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi_empty_vwap",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "20",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.1",
+        "exploration_fraction": "0.03"
+      }
+    }
+  },
+  "hIXICDQN5Strategy": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["hIXIC"],
+        "marketCountry": "us",
+        "balance": "10000000",
+        "strategyNum": "5",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi_empty_vwap",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "20",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.1",
+        "exploration_fraction": "0.03"
+      }
+    }
+  },
+  "hGSPCDQN5Strategy": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["hGSPC"],
+        "marketCountry": "us",
+        "balance": "10000000",
+        "strategyNum": "5",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi_empty_vwap",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "20",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.1",
+        "exploration_fraction": "0.03"
+      }
+    }
+  },
+  "h000905DQN": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["h000905"],
+        "marketCountry": "zh",
+        "balance": "10000000",
+        "strategyNum": "3",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "60",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.06",
+        "exploration_fraction": "0.3"
+      }
+    }
+  },
+"h000016DQN": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["h000016"],
+        "marketCountry": "zh",
+        "balance": "10000000",
+        "strategyNum": "3",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "60",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.06",
+        "exploration_fraction": "0.3"
+      }
+    }
+  },
+  "h000300DQN": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["h000300"],
+        "marketCountry": "zh",
+        "balance": "10000000",
+        "strategyNum": "3",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "60",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.06",
+        "exploration_fraction": "0.3"
+      }
+    }
+  },
+  "hDJIADQN": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["hDJI"],
+        "marketCountry": "us",
+        "balance": "10000000",
+        "strategyNum": "3",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "60",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.06",
+        "exploration_fraction": "0.3"
+      }
+    }
+  },
+  "hIXICDQN": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["hIXIC"],
+        "marketCountry": "us",
+        "balance": "10000000",
+        "strategyNum": "3",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "60",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.06",
+        "exploration_fraction": "0.3"
+      }
+    }
+  },
+  "hGSPCDQN": {
+    "rlEnvInit": {
+      "envName": "env_strategy",
+      "envParameters": {
+        "codeList": ["hGSPC"],
+        "marketCountry": "us",
+        "balance": "10000000",
+        "strategyNum": "3",
+        "strategyInitDay": "35",
+        "actionStrategyId": "two_bulin_rsi",
+        "obsDayNum": "20",
+        "obsFactorNum": "5",
+        "obsPcaNum": "1",
+        "obsFactorNameList": ["mytt"],
+        "maxStrategyStepLimit": "60",
+        "maxStrategySellLimit": "1",
+        "normalizeType": "minmax",
+        "isDiscrete": "True",
+        "rewardId": "rank_reward"
+      }
+
+    },
+    "algorithm": {
+      "system":"stable-baselines3",
+      "algorithmModel": "DQN",
+      "totalTimeSteps": "2e5",
+      "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
+      "algorithmParameters": {
+        "learning_rate": "5e-5",
+        "gamma": "0.1",
+        "exploration_initial_eps": "1",
+        "exploration_final_eps": "0.06",
+        "exploration_fraction": "0.3"
+      }
+    }
+  }
+
+}

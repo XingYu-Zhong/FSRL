@@ -1,0 +1,12 @@
+{
+  "//": "",
+  "global_variables": {
+    "isTest": "True",
+    "mailHost": "smtp.qq.com",
+    "mailUser": "xxxx",
+    "mailPass": "xxxx",
+    "receivers": [
+      "xxxx"
+    ]
+  }
+}

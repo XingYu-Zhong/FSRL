@@ -1,8 +1,4 @@
-# 📈 FSRL:Financial Strategy Reinforcement Learning.🤖
-
-
-
-
+# 📈 FSRL: Financial Strategy Reinforcement Learning 🤖
 
 <p align="center">
   <a href="https://skillicons.dev">
@@ -10,84 +6,114 @@
   </a>
 </p>
 
+<div align="center">
+    <img src="img/FSRL-cat.png" width="500">
+</div>
 
-![cat](img/FSRL-cat.png#pic_center)
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) 
+*Read this in other languages: [English](readme.md), [中文](readme_zh.md).*
 
-金融策略强化学习（FSRL）是第一个用于动态切换多种策略的开源框架。🔥
+FSRL (Financial Strategy Reinforcement Learning) is the first open-source framework capable of dynamic switching among multiple strategies.🔥
 
-### 概述
+### 📘 Overview
 
-FSRL通过强化学习技术让动态切换策略的设想在金融市场上成为了可能，将把多因子模型推进到多策略模型的时代，我们可以将多个策略交给FSRL进行训练，给训练好的模型导入新数据后，模型会在当前数据下自动选择用哪种策略。
+FSRL employs reinforcement learning techniques to allow the possibility of dynamically switching strategies in the financial market. This advancement ushers us into the era of multi-strategy models from the multi-factor model era. We can train FSRL with multiple strategies, and once the model is trained, we can input new data into the model. The model will then automatically select which strategy to use based on the current data.
 
 ![FSRL_process.png](img%2FFSRL_process.png)
 
-
-FSRL有三层：策略，代理，市场环境层，策略层与市场环境进行交互，提供策略在回测中的数据，并以此作为依据给出奖励，市场环境与代理层进行交互，市场环境层提供观察数据，代理层根据观察数据给出决策动作，市场环境层通过代理的动作和回测的数据计算奖励返回代理层，代理层得到奖励继续优化决策动作，以此行成正向循环。
+FSRL consists of three layers: Strategy, Agent, and Market Environment. The Strategy layer interacts with the Market Environment, provides the strategy data during backtesting, and gives rewards based on this. The Market Environment interacts with the Agent layer, providing observation data for the Agent layer to make decision actions. The Market Environment calculates rewards based on the Agent's actions and backtest data and returns the rewards to the Agent layer. After receiving the rewards, the Agent layer continues to optimize the decision actions, thus forming a positive loop.
 
 ![FSRL-Architecture.png](img%2FFSRL-Architecture.png)
 
-### 文件结构
+### 📁 File Structure
 
-整个框架分为几个模块：algomodel，analysis，backtest，env，config，logger，data，mainlab，strategy。
+The entire framework is divided into several modules: algomodel, analysis, backtest, env, config, logger, data, mainlab, strategy.
 
-algomodel：
+algomodel:
 
-1. 管理RL算法模型，设想可以接入多个方面的算法，比如stable-baselines3，tensorforce，RlegantRL，自己构造的算法库，目前实现了SB3里的算法
-2. 可以选择算法以及具体算法参数，设定默认参数
+1. Manages the reinforcement learning algorithm models and can incorporate algorithms from various fields, such as stable-baselines3, tensorforce, ElegantRL, and self-built algorithm libraries. Currently, the algorithms in SB3 have been implemented.
+2. Allows the selection of algorithms and the setting of specific algorithm parameters, with default parameters that can be set.
 
-analysis：
+analysis:
 
-1. 负责对已有策略进行分析，目前实现了对比原有当个策略的效果
-2. 后续加上可视化分析等等
+1. Responsible for analyzing existing strategies. Currently, it has implemented the comparison with the effects of the original single strategy.
+2. Visualization analysis and other functions will be added in the future.
 
-backtest：
+backtest:
 
-1. 回测框架，目前只实现了中国股票的回测，应该后续可以设计介入第三方的回测库，比如[backtrader](https://github.com/mementum/backtrader)，[qlib](https://github.com/microsoft/qlib)，[quanttrader](https://github.com/letianzj/quanttrader)，[backtesting](https://github.com/kernc/backtesting.py)，自己设计等等
-2. 目前没有用到第三方的原因是为了和策略集成所以全部自定义，但是可以实现将回测抽离出来的
+1. Backtest framework. Currently, backtesting for the Chinese and American stock markets has been implemented. In the future, third-party backtesting libraries can be integrated, such as [backtrader](https://github.com/mementum/backtrader), [qlib](https://github.com/microsoft/qlib), [quanttrader](https://github.com/letianzj/quanttrader), [backtesting](https://github.com/kernc/backtesting.py), and so on.
+2. The reason for not using a third party so far is for integration with the strategy, so everything is customized. However, in the future, it will be possible to abstract backtesting.
 
-env：
+env:
 
-1. 这个模块是用于管理RL环境的，包括action，evaluation，observation，reward这几个子模块，分别负责管理agent的动作，计算agent的评估指标，管理agent的观察值，管理agent获得的奖励
-2. 通过environment_init.py来管理用户具体使用的环境
+1. This module is used to manage the RL environment. It includes the action, evaluation, observation, and reward submodules, which are responsible for managing the agent's actions, calculating the agent's evaluation indicators, managing the agent's observations, and managing the rewards received by the agent.
+2. The specific environment used by the user is managed through environment_init.py.
 
-config：
+config:
 
-1. 将参数放到json文件里，通过这个模块去读取json文件里的参数
+1. Parameters are stored in a json file, and this module reads the parameters in the json file.
 
-logger：
+logger:
 
-1. 日志设置模块
+1. Log setup module.
 
-data：
+data:
 
-1. 获取股票基本数据
-2. 对基本数据加工获取因子数据
+1. Get basic stock data.
+2. Process basic data to obtain factor data.
 
-mianlab：
+mainlab:
 
-1. 实验训练，加载，测试模型的入口
+1. The entry point for experimental training, loading, and testing models.
 
-strategy：
+strategy:
 
-1. 策略实现模块，多个策略放到这里进行实现，去调用回测框架里进行回测 
+1. Strategy implementation module. Multiple strategies are implemented here and then used for backtesting in the backtest framework.
 
-### Contributors
+### 💻 Installation
 
-Thank you!
+Firstly, install the Python libraries listed in the `requirements.txt`.
+
+```shell
+pip install -r requirements.txt
+```
+Afterwards, install ta_lib. Make sure to select the appropriate ta_lib installation according to your specific environment.
+
+### 🚀 Quick Start
+1.Configure global_config.json in the config directory, mainly to set up your email information and other settings.
+2.Register an account on the official Tushare website, retrieve your token, and then configure the commission rate and minimum commission for the backtest system in test_account.json located in the config directory.
+3.Configure your data, environment, model, etc. in test_mainlab.json, also located in the config directory.
+4.Begin training FSRL.
+```shell
+python -u run.py --task_name=hDJIADQN\
+                 --env_type=train\
+                 --start_time=20101201\
+                 --end_time=20210101
+```
+5.After training is completed, test the model.
+```shell
+python -u run.py --task_name=hDJIADQN\
+                 --env_type=test\
+                 --start_time=20201201\
+                 --end_time=20230101
+```
 
 
-### Sponsorship
+### 👥 Contributors
 
-欢迎礼物用于支持FSRL。
+Welcome more people can participate in,Thank you!
 
-Network: USDT-TRC20 网络： USDT-TRC20
+### 💰 Sponsorship
 
-![USDT-TRC20.jpg](img%2FUSDT-TRC20.jpg)
+Welcome gifts to support FSRL.
 
-## LICENSE
+Network: USDT-TRC20
+
+<img src="img/USDT-TRC20.jpg" width="150" height="150">
+
+## 📝 License
 
 MIT License
 
-**免责声明：我们正在根据麻省理工学院教育许可证共享用于学术目的的代码。此处没有任何财务建议，也不是交易真实货币的建议。请使用常识，并在交易或投资之前始终首先咨询专业人士。**
+**Disclaimer: We are sharing this code for academic purposes under the MIT educational license. This is not financial advice, nor a suggestion to trade real currency. Always use your best judgment before trading or investing, and consult a professional if necessary.**

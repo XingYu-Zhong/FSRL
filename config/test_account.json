@@ -1,0 +1,9 @@
+{
+  "tushare": {
+    "token": ""
+  },
+  "stock_account": {
+    "commission_rate": 0.2,
+    "lowest_commission": 5
+  }
+}

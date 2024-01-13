@@ -72,6 +72,7 @@ strategy：
 1. 策略实现模块，将多个策略实现后放在这里，然后调用回测框架进行回测。
 
 ### 💻 安装
+用 python 3.8
 
 首先，安装`requirements.txt`中列出的Python库。
 ```python

@@ -72,6 +72,7 @@ strategy:
 1. Strategy implementation module. Multiple strategies are implemented here and then used for backtesting in the backtest framework.
 
 ### 💻 Installation
+use python 3.8
 
 Firstly, install the Python libraries listed in the `requirements.txt`.
 

@@ -9,7 +9,7 @@ MAX_ACCOUNT_BALANCE = 2147483647
 MAX_NUM_SHARES = 2147483647
 MAX_SHARE_PRICE = 5000
 class Observation:
-    def __init__(self,task_name,code_list,data,obs_day_num=20,obs_factor_num=5,normalize_type="minmax",obs_factor_name_list=[],obs_pca_num=1):
+    def __init__(self,task_name,code_list,data,obs_day_num=20,obs_factor_num=5,normalize_type="minmax",obs_factor_name_list=[],obs_pca_num=5):
         self.task_name = task_name
         self.obs_day_num = obs_day_num
         self.obs_factor_num = obs_factor_num

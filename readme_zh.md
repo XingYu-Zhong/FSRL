@@ -79,16 +79,15 @@ pip install -r requirements.txt
 ```
 接下来，安装ta_lib。根据您的具体环境选择合适的ta_lib安装。
 
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
+
 ### 🚀 快速开始
 1.在config目录中，设置global_config.json，主要是配置您的电子邮件信息和其他设置。
 2.在Tushare官网注册账号，获取您的token，然后在config目录中的test_account.json中配置回测系统的佣金率和最低佣金。
 3.在config目录中的test_mainlab.json中，配置您的数据、环境、模型等。
 4.开始训练FSRL。
 ```shell
-python -u run.py --task_name=hDJIADQN\
-                 --env_type=train\
-                 --start_time=20101201\
-                 --end_time=20210101
+python -u run.py --task_name=hDJIADQN --env_type=train --start_time=20101201 --end_time=20210101
 ```
 5.训练完成后，测试模型。
 ```shell
@@ -97,7 +96,10 @@ python -u run.py --task_name=hDJIADQN\
                  --start_time=20201201\
                  --end_time=20230101
 ```
-
+## tensorboard
+```shell
+tensorboard --logdir=tensorboard_logs
+```
 ### 👥 贡献者
 
 欢迎更多人能参与进来，感谢！

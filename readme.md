@@ -79,7 +79,8 @@ Firstly, install the Python libraries listed in the `requirements.txt`.
 pip install -r requirements.txt
 ```
 Afterwards, install ta_lib. Make sure to select the appropriate ta_lib installation according to your specific environment.
-
+ 
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
 ### 🚀 Quick Start
 1.Configure global_config.json in the config directory, mainly to set up your email information and other settings.
 2.Register an account on the official Tushare website, retrieve your token, and then configure the commission rate and minimum commission for the backtest system in test_account.json located in the config directory.
@@ -98,7 +99,10 @@ python -u run.py --task_name=hDJIADQN\
                  --start_time=20201201\
                  --end_time=20230101
 ```
-
+## tensorboard
+```shell
+tensorboard --logdir=tensorboard_logs
+```
 
 ### 👥 Contributors
 

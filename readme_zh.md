@@ -90,6 +90,10 @@ https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
 ```shell
 python -u run.py --task_name=hDJIADQN --env_type=train --start_time=20101201 --end_time=20210101
 ```
+如果在国内要访问美股数据，需要加入proxy
+```shell
+python -u run.py --task_name=hDJIADQN --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
+```
 5.训练完成后，测试模型。
 ```shell
 python -u run.py --task_name=hDJIADQN\

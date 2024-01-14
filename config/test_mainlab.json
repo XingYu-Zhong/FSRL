@@ -335,7 +335,7 @@
         "actionStrategyId": "two_bulin_rsi",
         "obsDayNum": "20",
         "obsFactorNum": "5",
-        "obsPcaNum": "1",
+        "obsPcaNum": "5",
         "obsFactorNameList": ["mytt"],
         "maxStrategyStepLimit": "60",
         "maxStrategySellLimit": "1",

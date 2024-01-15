@@ -91,7 +91,7 @@ class EnvStrategyTest(gym.Env):
                 low=0, high=1, shape=(1,), dtype=np.float16)
         # Prices contains the OHCL values for the last trade timestamp prices
         self.observation_space = spaces.Box(
-            low=0, high=1, shape=(1, self.obs_day_num), dtype=np.float16)
+            low=0, high=1, shape=(self.obs_pca_num, self.obs_day_num), dtype=np.float16)
 
         # Set the current step to a random point within the data frame
         self.current_step = self.obs_day_num+self.strategy_init_day

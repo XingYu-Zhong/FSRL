@@ -81,7 +81,7 @@ class EnvStrategyTrain(gym.Env):
                 low=0, high=1, shape=(1,), dtype=np.float16)
         # Prices contains the OHCL values for the last trade timestamp prices
         self.observation_space = spaces.Box(
-            low=0, high=1, shape=(1, self.obs_day_num), dtype=np.float16)
+            low=0, high=1, shape=(self.obs_pca_num, self.obs_day_num), dtype=np.float16)
 
         # Set the current step to a random point within the data frame
         self.init_current_step = random.randint(
@@ -97,8 +97,10 @@ class EnvStrategyTrain(gym.Env):
     def _next_observation(self):
         # Get the stock data points for the last trade timestamp days and scale to between 0-1
         obs = self.obs_init.get_obs(current_step=self.current_step,df=self.obs_data)
+        #目前没有多代码交易，obs:(1, 5, 20)
+        obs = obs[0]
         if obs.shape[1] != self.obs_day_num:
-            print(f"obs:{obs.shape[1]}\nself.current_step:{self.current_step}")
+            print(f"obs:{obs.shape}\nself.current_step:{self.current_step}")
         return obs
 
     def reset(self):

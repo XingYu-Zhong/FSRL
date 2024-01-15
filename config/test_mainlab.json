@@ -334,8 +334,8 @@
         "strategyInitDay": "35",
         "actionStrategyId": "two_bulin_rsi",
         "obsDayNum": "20",
-        "obsFactorNum": "5",
-        "obsPcaNum": "1",
+        "obsFactorNum": "15",
+        "obsPcaNum": "5",
         "obsFactorNameList": ["mytt"],
         "maxStrategyStepLimit": "60",
         "maxStrategySellLimit": "1",
@@ -354,8 +354,8 @@
         "learning_rate": "5e-5",
         "gamma": "0.1",
         "exploration_initial_eps": "1",
-        "exploration_final_eps": "0.06",
-        "exploration_fraction": "0.3"
+        "exploration_final_eps": "0.3",
+        "exploration_fraction": "0.2"
       }
     }
   },

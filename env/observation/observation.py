@@ -90,14 +90,11 @@ class Observation:
         df = self.normalize_data(data=df, normalize_type=self.normalize_type)
         df = self.process_columns(df)
         df = df.iloc[:, :self.obs_factor_num]
-
         column_name_list = df.columns.tolist()
         column_name_list = list(set(column_name_list))
-
         # 将code字段添加回df
         df['code'] = code_series
         pca = PCA(n_components=self.obs_pca_num)  # 创建PCA实例
-        scaler = MinMaxScaler()  # 创建一个MinMaxScaler实例
         obs_list_tmp = []
         for code in self.code_list:
             code_df = df[df["code"] == str(code)]
@@ -107,8 +104,11 @@ class Observation:
             data = code_df.iloc[current_step - self.obs_day_num: current_step][column_name_list].values
             if data.shape[0] > 1:  # 确保有足够的数据进行PCA
                 data = pca.fit_transform(data)  # PCA降维
-            data = scaler.fit_transform(data)
-            obs_list_tmp.append(data.ravel())  # 由于每个数
+            data = data.T
+            min_max_scaler = lambda x: (x - np.min(x)) / (np.max(x) - np.min(x))
+            normalized_transposed_data = np.apply_along_axis(min_max_scaler, 1, data)
+            normalized_transposed_data.tolist()
+            obs_list_tmp.append(normalized_transposed_data)  # 由于每个数
         # 转换为Numpy数组
         obs_array = np.array(obs_list_tmp)
         return obs_array

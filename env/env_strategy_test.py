@@ -47,7 +47,7 @@ class EnvStrategyTest(gym.Env):
         obs_factor_name_list = trade_env_parameters[
             'obsFactorNameList'] if 'obsFactorNameList' in trade_env_parameters else ["mytt"]
         normalize_type = trade_env_parameters['normalizeType'] if 'normalizeType' in trade_env_parameters else "minmax"
-        obs_pca_num = trade_env_parameters['obsPcaNum'] if 'obsPcaNum' in trade_env_parameters else "1"
+        obs_pca_num = trade_env_parameters['obsPcaNum'] if 'obsPcaNum' in trade_env_parameters else "5"
 
         get_data = GetData(country=country, start_date=train_start_time, end_date=train_end_time, code_list=code_list)
         trade_cal = get_data.get_trade_cal()

@@ -348,7 +348,7 @@
     "algorithm": {
       "system":"stable-baselines3",
       "algorithmModel": "DQN",
-      "totalTimeSteps": "2e5",
+      "totalTimeSteps": "2e4",
       "//": "learningRate:学习率  entCoef：熵权重，action探索权重  nSteps：训练观察（动作）次数，建议根据训练数据长度定，最好是8的倍数 nEpochs：n次训练观察次数为1次总训练次数 batchSize：缓存大小，最好是nSteps的倍数",
       "algorithmParameters": {
         "learning_rate": "5e-5",

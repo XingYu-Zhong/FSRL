@@ -4,6 +4,7 @@ from data.get_data import GetData
 from env.observation.observation import Observation
 from env.action.action import Action
 from strategy.strategy import Strategy
+from logger.logging_config import logger
 class EnvStrategyLlm:
     def __init__(self,trade_env_parameters) -> None:
         country = trade_env_parameters['marketCountry'] if 'marketCountry' in trade_env_parameters else 'zh'
@@ -26,7 +27,7 @@ class EnvStrategyLlm:
         obs_factor_name_list = trade_env_parameters[
             'obsFactorNameList'] if 'obsFactorNameList' in trade_env_parameters else ["mytt"]
         normalize_type = trade_env_parameters['normalizeType'] if 'normalizeType' in trade_env_parameters else "minmax"
-        obs_pca_num = trade_env_parameters['obsPcaNum'] if 'obsPcaNum' in trade_env_parameters else "1"
+        obs_pca_num = trade_env_parameters['obsPcaNum'] if 'obsPcaNum' in trade_env_parameters else "5"
 
 
 
@@ -74,4 +75,48 @@ class EnvStrategyLlm:
                                     obs_factor_name_list=obs_factor_name_list, normalize_type=normalize_type,obs_pca_num=self.obs_pca_num)
         self.obs_data = self.obs_init.init_obs()
 
+    def reset(self):
+        # Reset the state of the environment to an initial state
+        self.balance = self.init_balance
+        self.result_df = pd.DataFrame()
+        # 重置累积奖励
         self.step_reward = 0
+        # Set the current step to a random point within the data frame
+        self.current_step = self.obs_day_num+self.strategy_init_day
+        self.last_tradedate = self.df.loc[self.current_step, 'date']
+
+        return self._next_observation()
+
+    def _next_observation(self):
+        # Get the stock data points for the last trade timestamp days and scale to between 0-1
+        obs = self.obs_init.get_obs(current_step=self.current_step,df=self.obs_data)
+        #目前没有多代码交易，obs:(1, 5, 20)
+        obs = obs[0]
+        if obs.shape[1] != self.obs_day_num:
+            print(f"obs:{obs.shape}\nself.current_step:{self.current_step}")
+        return obs
+    
+    def _take_action(self, actions):
+        choose_action = actions
+        self.result_df,self.strategy_num_choose,reward,add_step = self.action_strategy.action_strategy(all_result_df=self.result_df,strategy_num_choose=self.strategy_num_choose,choose_action=choose_action,balance=self.balance,last_tradedate=self.last_tradedate,train_end_time=self.train_end_time,code_list=self.code_list)
+        self.balance = self.result_df.iloc[-1]['value']
+        # Update the current_step_list only if the current_step is not at the maximum value for the respective stock
+        self.current_step = self.current_step + add_step
+        self.last_tradedate = self.result_df.iloc[-1]['date'].strftime('%Y%m%d')
+        return reward
+    
+    def step(self, action):
+
+        # Execute one time step within the environment
+        rewards = self._take_action(action)
+        done = self.current_step >= self.df.shape[0]/len(self.code_list) - self.obs_day_num
+        if done:
+            snc_pd = pd.DataFrame(data=self.strategy_num_choose,columns=['strategy_num_choose'])
+            logger.info(f"snc_pd:\n{snc_pd}")
+            self.current_step = self.init_current_step
+        # 记录奖励
+        info = {'step_reward': rewards,'done':done}
+        # Update the state
+        obs = self._next_observation()
+        print(f"current_step:{self.current_step}，action:{action},reward:{rewards}")
+        return obs, rewards, done, info

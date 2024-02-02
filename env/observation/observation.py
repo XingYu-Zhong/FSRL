@@ -111,6 +111,7 @@ class Observation:
             obs_list_tmp.append(normalized_transposed_data)  # 由于每个数
         # 转换为Numpy数组
         obs_array = np.array(obs_list_tmp)
+        print(f'obs_array:{obs_array}')
         return obs_array
 
 

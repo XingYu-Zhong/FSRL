@@ -21,5 +21,6 @@ class TradeAgent:
     def predict(self,obs:Any):
         pass
 
+
         
         

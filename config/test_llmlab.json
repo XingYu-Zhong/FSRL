@@ -1,0 +1,27 @@
+{
+    "h000905llm5Strategy": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["h000905"],
+          "marketCountry": "zh",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "55",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    }
+}

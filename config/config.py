@@ -23,7 +23,10 @@ class ConfigJson:
             'account.json')
         with open(config_path, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
-        self.tushare_token = json_data["tushare"]["token"]
+        tushare = json_data["tushare"]
+        self.tushare_token = tushare["token"] if "token" in tushare else None
+        self.mjs_token = tushare["mjs_token"] if "mjs_token" in tushare else None
+        self.openai_api_key = json_data["openai"]["api_key"]
         self.commission_rate = json_data["stock_account"]["commission_rate"]
         self.lowest_commission = json_data["stock_account"]["lowest_commission"]
 
@@ -46,6 +49,25 @@ class ConfigJson:
             alog_parameters = algorithm['algorithmParameters']
             self.alog_parameters = alog_parameters
             self.total_timesteps = int(float(algorithm['totalTimeSteps']))
+
+    def get_llmlab(self,task_name):
+        config_path = os.path.join(os.path.dirname(__file__), 'test_llmlab.json') if self.is_test else os.path.join(
+            os.path.dirname(__file__),
+            'llmlab.json')
+        with open(config_path, 'r', encoding='utf-8') as f:
+            json_data = json.load(f)
+
+        llmEnvInit =self.trade_env_sys = json_data[task_name]['llmEnvInit']
+        self.trade_env_name = llmEnvInit['envName']
+        self.trade_env_parameters = llmEnvInit['envParameters']
+
+
+        algorithm  = json_data[task_name]['algorithm']
+        self.algo_sys = algorithm['system'] if 'system' in algorithm else "openai"
+        if self.algo_sys == "openai":
+            self.algo_model = algorithm['algorithmModel'] if 'algorithmModel' in algorithm else "gpt-4"
+            alog_parameters = algorithm['algorithmParameters']
+            self.alog_parameters = alog_parameters
 
 
 

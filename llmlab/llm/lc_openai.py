@@ -1,5 +1,6 @@
-from langchain_community.chat_models import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from typing import Optional
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
 from langchain.prompts.chat import HumanMessagePromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
@@ -30,28 +31,30 @@ class LangChainLLM:
         texts = text_splitter.split_text(text)
         return texts[0]
 
-    def chat(self, prompt, instructions=None):
+    def chat(self, prompt:str, instructions:Optional[str]=None):
         # 使用指定的prompt和instructions进行聊天
         prompt = prompt.replace("{", "{{").replace("}", "}}")
         if instructions:
+            instructions = instructions.replace("{", "{{").replace("}", "}}")
             chatprompt = ChatPromptTemplate.from_messages(
                 [
-                    SystemMessage(content=(instructions)),
-                    HumanMessagePromptTemplate.from_template(prompt),
+                    SystemMessage(content=instructions),
+                    HumanMessage(content=prompt),
                 ]
             )
         else:
             chatprompt = ChatPromptTemplate.from_template(prompt)
         model = ChatOpenAI(model=self.model, api_key=self.openai_api_key)
         output_parser = StrOutputParser()
-        chain = chatprompt | model | output_parser
+        chain = (chatprompt | model | output_parser)
         # 调用链式处理并返回结果
-        return chain.invoke("")
+        return chain.invoke({'':''})
 
     async def achat(self, prompt, instructions=None):
         # 异步版本的chat方法
         prompt = prompt.replace("{", "{{").replace("}", "}}")
         if instructions:
+            instructions = instructions.replace("{", "{{").replace("}", "}}")
             chatprompt = ChatPromptTemplate.from_messages(
                 [
                     SystemMessage(content=(instructions)),
@@ -64,4 +67,4 @@ class LangChainLLM:
         output_parser = StrOutputParser()
         chain = chatprompt | model | output_parser
         # 异步调用链式处理并返回结果
-        return await chain.ainvoke("")
+        return await chain.ainvoke({'':''})

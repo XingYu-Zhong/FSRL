@@ -79,7 +79,11 @@ class Observation:
                 df[column] = df[column].apply(lambda x: np.mean(x))
         return df
 
+    def get_llm_obs(self, current_step, df=pd.DataFrame()):
+        df = df.iloc[:, :self.obs_factor_num]
+        return df.iloc[current_step - self.obs_day_num: current_step]
     def get_obs(self, current_step, df=pd.DataFrame()):
+        
         # 提取code字段并存储
         code_series = df['code']
 
@@ -111,7 +115,6 @@ class Observation:
             obs_list_tmp.append(normalized_transposed_data)  # 由于每个数
         # 转换为Numpy数组
         obs_array = np.array(obs_list_tmp)
-        print(f'obs_array:{obs_array}')
         return obs_array
 
 

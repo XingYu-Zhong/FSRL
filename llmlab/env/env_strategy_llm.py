@@ -5,6 +5,8 @@ from env.observation.observation import Observation
 from env.action.action import Action
 from strategy.strategy import Strategy
 from logger.logging_config import logger
+from env.evaluation.evaluation import Evaluation
+import os
 class EnvStrategyLlm:
     def __init__(self,trade_env_parameters) -> None:
         country = trade_env_parameters['marketCountry'] if 'marketCountry' in trade_env_parameters else 'zh'
@@ -89,10 +91,8 @@ class EnvStrategyLlm:
 
     def _next_observation(self):
         # Get the stock data points for the last trade timestamp days and scale to between 0-1
-        obs = self.obs_init.get_obs(current_step=self.current_step,df=self.obs_data)
-        #目前没有多代码交易，obs:(1, 5, 20)
-        obs = obs[0]
-        if obs.shape[1] != self.obs_day_num:
+        obs = self.obs_init.get_llm_obs(current_step=self.current_step,df=self.obs_data)
+        if len(obs) != self.obs_day_num:
             print(f"obs:{obs.shape}\nself.current_step:{self.current_step}")
         return obs
     
@@ -111,12 +111,37 @@ class EnvStrategyLlm:
         rewards = self._take_action(action)
         done = self.current_step >= self.df.shape[0]/len(self.code_list) - self.obs_day_num
         if done:
-            snc_pd = pd.DataFrame(data=self.strategy_num_choose,columns=['strategy_num_choose'])
+
+            snc_pd = pd.DataFrame(data=self.strategy_num_choose, columns=['strategy_num_choose'])
             logger.info(f"snc_pd:\n{snc_pd}")
-            self.current_step = self.init_current_step
-        # 记录奖励
-        info = {'step_reward': rewards,'done':done}
+
+
+            sharpe_ratio_no_risk, sharpe_ratio, max_drawdown, annualized_return, annualized_volatility, total_return, total_profits = Evaluation(
+                sr_risk=0.02).standard_evaluation(df=self.result_df.copy())
+            result_list = [sharpe_ratio_no_risk, sharpe_ratio, max_drawdown, annualized_return, annualized_volatility,total_return,total_profits]
+            logger.info(f"strategy:all")
+            logger.info(f'sharpe_ratio:{sharpe_ratio_no_risk}')
+            logger.info(f'sharpe_ratio(0.02):{sharpe_ratio}')
+            logger.info(f'max_drawdown:{max_drawdown}')
+            logger.info(f'annual_return:{annualized_return}')
+            logger.info(f'annual_volatility:{annualized_volatility}')
+            logger.info(f'Total return:{total_return}')
+            logger.info(f'Total profits:{total_profits}')
+            all_result_pd = pd.DataFrame(data=result_list,columns=[self.action_strategy_id],
+                                     index=["sharpe_ratio", "sharpe_ratio(0.02)", "max_drawdown", "annual_return",
+                                              "annual_volatility","total_return", "total_profits"]).T
+            # TODO  root_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'resultdata')
+            root_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'resultdata')
+            file_name = self.task_name + f"_Evaluation_result_{self.train_start_time}_to_{self.train_end_time}.csv"
+            file_path = os.path.join(root_path, file_name)
+            balance_file_name = self.task_name + f"_balance_{self.train_start_time}_to_{self.train_end_time}.csv"
+            balance_file_path= os.path.join(root_path, balance_file_name)
+            all_result_pd.to_csv(file_path)
+            self.result_df  = self.result_df[['value','cash','date','strategy_name','position']]
+            self.result_df.to_csv(balance_file_path, index=False)
+            logger.info(f"all_result_pd:\n{all_result_pd}")
+            return [], rewards, done, {}
         # Update the state
         obs = self._next_observation()
-        print(f"current_step:{self.current_step}，action:{action},reward:{rewards}")
-        return obs, rewards, done, info
+
+        return obs, rewards, done, {}

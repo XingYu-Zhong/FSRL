@@ -27,7 +27,11 @@ class GetData:
         config.get_account()
         self.tushare_token = config.tushare_token
         ts.set_token(self.tushare_token)  # 设置token，只需设置一次
-        self.api = ts.pro_api()  # 初始化接口
+        if config.mjs_token:
+            self.api = ts.pro_api(config.mjs_token)
+            self.api._DataApi__http_url = 'http://tsapi.majors.ltd:7000'
+        else:
+            self.api = ts.pro_api()  # 初始化接口
         self.country = country.lower()
         self.start_date =  start_date
         self.end_date = end_date

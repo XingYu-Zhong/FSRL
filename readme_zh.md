@@ -103,7 +103,7 @@ python -u run.py --task_name=hDJIADQN\
 ```
 using llm
 ```shell
-python -u run.py --task_name=h000905llm5Strategy --env_type=llm --start_time=20211201 --end_time=20220601 --proxy=10809
+python -u run.py --task_name=h000905llm5Strategy --env_type=llm --start_time=20201201 --end_time=20230101 --proxy=10809
 ```
 ## tensorboard
 ```shell

@@ -55,8 +55,8 @@ class Strategy:
                 data_by_code = hist_data.loc[IndexSlice[code,:], 'close']
 
                 # 计算5天和10天移动平均值
-                ma5 = data_by_code.head(5).mean()
-                ma10 = data_by_code.mean()
+                ma5 = round(data_by_code.tail(5).mean(), 2)
+                ma10 = round(data_by_code.mean(), 2)
 
                 if ma5 > ma10 and code not in self.bao.positions:
                     if max_buy_cash_limit > self.bao.cash:

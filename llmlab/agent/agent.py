@@ -24,7 +24,7 @@ class TradeAgent:
         self.actions_prompt = actions_prompt
     
     def predict(self,obs:Any,rewards:Optional[int]):
-        obs_str = "Input:\n"+str(obs)+"\nOutput:"
+        obs_str = "Input:\n" + obs.to_string(max_rows=None, index=False) + "\nOutput:"
         instructions = action_prompt_begin+self.strategy_summary+self.actions_prompt+action_prompt_example+action_prompt_hint
         max_attempts = 5
         attempts = 0

@@ -10,7 +10,7 @@
           "strategyInitDay": "35",
           "actionStrategyId": "two_bulin_rsi_empty_vwap",
           "obsDayNum": "20",
-          "obsFactorNum": "55",
+          "obsFactorNum": "60",
           "obsFactorNameList": ["mytt"],
           "maxStrategyStepLimit": "20",
           "maxStrategySellLimit": "1",
@@ -21,6 +21,332 @@
       "algorithm": {
         "system":"openai",
         "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "h000016llm5Strategy": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["h000016"],
+          "marketCountry": "zh",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "h000300llm5Strategy": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["h000300"],
+          "marketCountry": "zh",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "hDJIAllm5Strategy": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hDJI"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "hIXICllm5Strategy": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hIXIC"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "hGSPCllm5Strategy": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hGSPC"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "h000905llm": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["h000905"],
+          "marketCountry": "zh",
+          "balance": "10000000",
+          "strategyNum": "3",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "60",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+  "h000016llm": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["h000016"],
+          "marketCountry": "zh",
+          "balance": "10000000",
+          "strategyNum": "3",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "60",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "h000300llm": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["h000300"],
+          "marketCountry": "zh",
+          "balance": "10000000",
+          "strategyNum": "3",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi",
+          "obsDayNum": "20",
+          "obsFactorNum": "55",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "60",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+      
+    },
+    "hDJIAllm": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hDJI"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "3",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "60",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "hIXICllm": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hIXIC"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "3",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "60",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "hGSPCllm": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hGSPC"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "3",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "60",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-4-1106-preview",
+        "algorithmParameters": {}
+      }
+    },
+    "hIXICllm5Strategy35": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hIXIC"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-3.5-turbo",
+        "algorithmParameters": {}
+      }
+    },
+    "hGSPCllm5Strategy35": {
+      "llmEnvInit": {
+        "envName": "env_strategy",
+        "envParameters": {
+          "codeList": ["hGSPC"],
+          "marketCountry": "us",
+          "balance": "10000000",
+          "strategyNum": "5",
+          "strategyInitDay": "35",
+          "actionStrategyId": "two_bulin_rsi_empty_vwap",
+          "obsDayNum": "20",
+          "obsFactorNum": "60",
+          "obsFactorNameList": ["mytt"],
+          "maxStrategyStepLimit": "20",
+          "maxStrategySellLimit": "1",
+          "rewardId": "rank_reward"
+        }
+  
+      },
+      "algorithm": {
+        "system":"openai",
+        "algorithmModel": "gpt-3.5-turbo",
         "algorithmParameters": {}
       }
     }

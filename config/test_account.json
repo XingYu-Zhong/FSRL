@@ -1,9 +1,13 @@
 {
   "tushare": {
-    "token": ""
+    "token": "",
+    "mjs_token":"20240610100302-c4044f95-3623-4cb5-bd86-c903f9b4552e"
   },
   "stock_account": {
     "commission_rate": 0.2,
     "lowest_commission": 5
+  },
+  "openai": {
+    "api_key": ""
   }
 }

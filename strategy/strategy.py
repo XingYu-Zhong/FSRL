@@ -351,3 +351,92 @@ class Strategy:
         df = self.bao.run_strategy(achievement_strategy_func=achievement_strategy)
         df['strategy_name'] = 'true_empty_strategy'
         return df
+    
+    def buy_strategy(self, cash, start_date, end_date, code_list):
+        """
+        单纯买入策略
+        :param cash:
+        :param start_date:
+        :param end_date:
+        :param code_list:
+        :return:
+        """
+        self.strategy_step = 0
+        self.bao.init_strategy(cash=cash, start_date=start_date, end_date=end_date, code_list=code_list)
+
+        def achievement_strategy(end_flag=False):
+            max_buy_cash_limit = self.bao.cash * (1.0 / float(len(code_list)))
+            self.strategy_step += 1
+            end_flag = end_flag
+
+            for code in self.bao.code_list:
+                if self.bao.cash >= max_buy_cash_limit:
+                    self.bao.order_value(code, max_buy_cash_limit)
+                else:
+                    end_flag = True
+
+            if self.strategy_step == self.max_strategy_step_limit:
+                end_flag = True
+
+            return end_flag
+
+        df = self.bao.run_strategy(achievement_strategy_func=achievement_strategy)
+        df['strategy_name'] = 'buy_strategy'
+        return df
+
+    def sell_strategy(self, cash, start_date, end_date, code_list):
+        """
+        单纯卖出策略
+        :param cash:
+        :param start_date:
+        :param end_date:
+        :param code_list:
+        :return:
+        """
+        self.strategy_step = 0
+        self.bao.init_strategy(cash=cash, start_date=start_date, end_date=end_date, code_list=code_list)
+
+        def achievement_strategy(end_flag=False):
+            self.strategy_step += 1
+            end_flag = end_flag
+
+            for code in self.bao.code_list:
+                if code in self.bao.positions:
+                    self.bao.order_target_amount(code, 0)  # 卖出所有持仓
+                else:
+                    end_flag = True
+
+            if self.strategy_step == self.max_strategy_step_limit:
+                end_flag = True
+
+            return end_flag
+
+        df = self.bao.run_strategy(achievement_strategy_func=achievement_strategy)
+        df['strategy_name'] = 'sell_strategy'
+        return df
+    def hold_strategy(self, cash, start_date, end_date, code_list):
+        """
+        持有策略
+        :param cash:
+        :param start_date:
+        :param end_date:
+        :param code_list:
+        :return:
+        """
+        self.strategy_step = 0
+        self.bao.init_strategy(cash=cash, start_date=start_date, end_date=end_date, code_list=code_list)
+
+        def achievement_strategy(end_flag=False):
+            self.strategy_step += 1
+            end_flag = end_flag
+
+            # 不进行任何买卖操作
+
+            if self.strategy_step == self.max_strategy_step_limit:
+                end_flag = True
+
+            return end_flag
+
+        df = self.bao.run_strategy(achievement_strategy_func=achievement_strategy)
+        df['strategy_name'] = 'hold_strategy'
+        return df

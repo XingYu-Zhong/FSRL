@@ -22,7 +22,10 @@ def prue_num_code(x):
 class GetData:
 
     def __init__(self,country,start_date,end_date,code_list):
-        bs.login()
+        lg = bs.login()
+        # 显示登陆返回信息
+        print('login respond error_code:'+lg.error_code)
+        print('login respond  error_msg:'+lg.error_msg)
         config = ConfigJson()
         config.get_account()
         self.tushare_token = config.tushare_token

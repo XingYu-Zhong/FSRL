@@ -83,15 +83,7 @@ Afterwards, install ta_lib. Make sure to select the appropriate ta_lib installat
  
 https://ta-lib.github.io/ta-lib-python/install.html
 
-```shell
-tar -xzvf ta-lib-0.4.0-src.tar.gz
 
-cd ta-lib
-
-./configure --prefix=/usr
-make
-sudo make install
-```
 
 ### 🚀 Quick Start
 1.Configure global_config.json in the config directory, mainly to set up your email information and other settings.

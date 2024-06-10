@@ -82,15 +82,7 @@ pip install -r requirements.txt
 
 https://ta-lib.github.io/ta-lib-python/install.html
 
-```shell
-tar -xzvf ta-lib-0.4.0-src.tar.gz
 
-cd ta-lib
-
-./configure --prefix=/usr
-make
-sudo make install
-```
 
 ### 🚀 快速开始
 1.在config目录中，设置global_config.json，主要是配置您的电子邮件信息和其他设置。

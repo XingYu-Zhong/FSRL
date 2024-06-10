@@ -50,7 +50,13 @@ class BaoBackTest:
         # 使用掩码筛选数据
         trade_data = self.current_trade_data.loc[mask]
         trade_data = trade_data[list(fields)]
-        trade_data = trade_data.apply(pd.to_numeric, errors='ignore')
+        def try_convert(x):
+            try:
+                return pd.to_numeric(x)
+            except ValueError:
+                return x
+
+        trade_data = trade_data.apply(lambda series: series.map(try_convert))
         if len(trade_data)==0:
 
             logger.error(f"get_pretrade_data trade_data is empty,start_date:{start_date},end_date:{end_date}")
@@ -66,7 +72,16 @@ class BaoBackTest:
             return pd.DataFrame(columns=trade_data.columns)
 
         data = trade_data.loc[IndexSlice[code, current_date], :]
-        data = data.apply(pd.to_numeric, errors='ignore')
+        def try_convert(x):
+            try:
+                return pd.to_numeric(x)
+            except ValueError:
+                return x
+
+        if isinstance(data, pd.Series):
+            data = data.map(try_convert)
+        else:
+            data = try_convert(data)        
         # data = data.to_frame().T
         return data
 

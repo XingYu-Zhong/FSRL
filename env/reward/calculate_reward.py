@@ -56,8 +56,8 @@ class CalReward:
             weights = [0.09, 0.06, 0.65, 0.05, 0.05]  # 默认权重分配
 
         # 计算收益率
+        df['value'] = df['value'].infer_objects(copy=False)
         df['return'] = df['value'].pct_change()
-
         # 年化收益率和年化波动率
         annualized_return = np.mean(df['return']) * 252
         annualized_volatility = np.std(df['return']) * np.sqrt(252)

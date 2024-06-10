@@ -82,6 +82,17 @@ pip install -r requirements.txt
 Afterwards, install ta_lib. Make sure to select the appropriate ta_lib installation according to your specific environment.
  
 https://ta-lib.github.io/ta-lib-python/install.html
+
+```shell
+tar -xzvf ta-lib-0.4.0-src.tar.gz
+
+cd ta-lib
+
+./configure --prefix=/usr
+make
+sudo make install
+```
+
 ### 🚀 Quick Start
 1.Configure global_config.json in the config directory, mainly to set up your email information and other settings.
 2.Register an account on the official Tushare website, retrieve your token, and then configure the commission rate and minimum commission for the backtest system in test_account.json located in the config directory.

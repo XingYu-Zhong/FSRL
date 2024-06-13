@@ -76,8 +76,20 @@ class CalReward:
         total_return = (df['value'].iloc[-1] / df['value'].iloc[0]) - 1
 
         indicators = [sharpe_ratio, max_drawdown, total_return, annualized_return, annualized_volatility]
+        print(f'indicators:{indicators}')
 
         # 计算综合评分
         score = sum(w * i for w, i in zip(weights, indicators))
+        print(f'indicators score:{score}')
 
+        return score
+    def calculate_score(self,df):
+        """
+        计算得分：df的value的最后一个值减去第一个值
+        :param df: 包含value列的DataFrame
+        :return: 计算得到的分数
+        """
+        if df.empty:
+            return 0
+        score = df['value'].iloc[-1] - df['value'].iloc[0]
         return score

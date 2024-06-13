@@ -21,8 +21,95 @@ class Action:
         elif self.action_strategy_id == "two_bulin_rsi":
             return self.two_bulin_rsi(strategy_num_choose, choose_action, balance, last_tradedate,
                                                    train_end_time, code_list, all_result_df)
+        elif self.action_strategy_id == "hold_buy_sell":
+            return self.hold_buy_sell(strategy_num_choose, choose_action, balance, last_tradedate,
+                                                   train_end_time, code_list, all_result_df)
+        elif self.action_strategy_id == "buy_sell":
+            return self.buy_sell(strategy_num_choose, choose_action, balance, last_tradedate, train_end_time, code_list, all_result_df)
         else:
             raise ValueError("action_strategy_id is not exist")
+    def buy_sell(self, strategy_num_choose, choose_action, balance, last_tradedate, train_end_time, code_list, all_result_df):
+        one_strategy = strategy_num_choose[0]
+        two_strategy = strategy_num_choose[1]
+        buy_strategy_copy = copy.deepcopy(self.out_strategy)
+        sell_strategy_copy = copy.deepcopy(self.out_strategy)
+
+        # 计算买入和卖出策略的结果
+        buy_result = buy_strategy_copy.buy_strategy(cash=balance, start_date=last_tradedate, end_date=train_end_time, code_list=code_list)
+        sell_result = sell_strategy_copy.sell_strategy(cash=balance, start_date=last_tradedate, end_date=train_end_time, code_list=code_list)
+
+        # 根据 choose_action 选择策略
+        if choose_action == 0:
+            one_strategy += 1
+            result_df = buy_result
+            self.out_strategy = buy_strategy_copy
+        else:
+            two_strategy += 1
+            result_df = sell_result
+            self.out_strategy = sell_strategy_copy
+
+        self.cap.append(choose_action)  # 将当前选择加入到cap队列中
+        strategy_num_choose = [one_strategy, two_strategy]
+        # 计算策略得分
+        scores = [self.cal_reward.calculate_score(result) for result in [buy_result, sell_result]]
+
+        # 给策略分配奖励
+        reward = self.cal_reward.calculate_reward({"scores": scores, "action": choose_action, "cap": self.cap})
+
+        result_df = result_df[['value', 'cash', 'date', 'strategy_name', 'position']]
+        all_result_df = pd.concat([all_result_df, result_df])
+
+        return all_result_df, strategy_num_choose, reward, len(result_df)
+    
+    def hold_buy_sell(self, strategy_num_choose, choose_action, balance, last_tradedate, train_end_time, code_list, all_result_df):
+        one_strategy = strategy_num_choose[0]
+        two_strategy = strategy_num_choose[1]
+        three_strategy = strategy_num_choose[2]
+        hold_strategy_copy = copy.deepcopy(self.out_strategy)
+        buy_strategy_copy = copy.deepcopy(self.out_strategy)
+        sell_strategy_copy = copy.deepcopy(self.out_strategy)
+
+        # 计算三个策略的结果
+        hold_result = hold_strategy_copy.hold_strategy(cash=balance, start_date=last_tradedate, end_date=train_end_time, code_list=code_list)
+        buy_result = buy_strategy_copy.buy_strategy(cash=balance, start_date=last_tradedate, end_date=train_end_time, code_list=code_list)
+        sell_result = sell_strategy_copy.sell_strategy(cash=balance, start_date=last_tradedate, end_date=train_end_time, code_list=code_list)
+
+        # print(f"hold_result:{hold_result}")
+        # print(f"buy_result:{buy_result}")
+        # print(f"sell_result:{sell_result}")
+
+        # 根据 choose_action 选择策略
+        if choose_action == 0:
+            one_strategy += 1
+            result_df = hold_result
+            self.out_strategy = hold_strategy_copy
+        elif choose_action == 1:
+            two_strategy += 1
+            result_df = buy_result
+            self.out_strategy = buy_strategy_copy
+        else:
+            three_strategy += 1
+            result_df = sell_result
+            self.out_strategy = sell_strategy_copy
+
+        self.cap.append(choose_action)  # 将当前选择加入到cap队列中
+        strategy_num_choose = [one_strategy, two_strategy, three_strategy]
+        # 计算策略得分
+        scores = []
+        for result in [hold_result, buy_result, sell_result]:
+            print(f"result:{result}")
+            score = self.cal_reward.calculate_score(result)
+            print(f"score:{score}")
+            scores.append(score)
+        print(f'scores:{scores}')
+
+        # 给策略分配奖励
+        reward = self.cal_reward.calculate_reward({"scores": scores, "action": choose_action, "cap": self.cap})
+
+        result_df = result_df[['value', 'cash', 'date', 'strategy_name', 'position']]
+        all_result_df = pd.concat([all_result_df, result_df])
+
+        return all_result_df, strategy_num_choose, reward, len(result_df)
 
     def two_bulin_rsi(self, strategy_num_choose, choose_action, balance, last_tradedate, train_end_time, code_list,all_result_df):
         one_strategy = strategy_num_choose[0]

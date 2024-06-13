@@ -106,7 +106,7 @@ class Observation:
             code_df = code_df.reset_index(drop=True)
             # 提取需要的数据
             data = code_df.iloc[current_step - self.obs_day_num: current_step][column_name_list].values
-            if data.shape[0] > 1:  # 确保有足够的数据进行PCA
+            if data.shape[0] > self.obs_pca_num:  # 确保有足够的数据进行PCA
                 data = pca.fit_transform(data)  # PCA降维
             data = data.T
             min_max_scaler = lambda x: (x - np.min(x)) / (np.max(x) - np.min(x))

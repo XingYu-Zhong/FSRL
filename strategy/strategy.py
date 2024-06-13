@@ -373,7 +373,7 @@ class Strategy:
                 if self.bao.cash >= max_buy_cash_limit:
                     self.bao.order_value(code, max_buy_cash_limit)
                 else:
-                    end_flag = True
+                    continue
 
             if self.strategy_step == self.max_strategy_step_limit:
                 end_flag = True
@@ -403,8 +403,7 @@ class Strategy:
             for code in self.bao.code_list:
                 if code in self.bao.positions:
                     self.bao.order_target_amount(code, 0)  # 卖出所有持仓
-                else:
-                    end_flag = True
+                
 
             if self.strategy_step == self.max_strategy_step_limit:
                 end_flag = True

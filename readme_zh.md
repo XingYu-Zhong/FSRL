@@ -83,9 +83,26 @@ pip install -r requirements.txt
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
 
 ### 🚀 快速开始
+#### 后端
 1.在config目录中，设置global_config.json，主要是配置您的电子邮件信息和其他设置。
 2.在Tushare官网注册账号，获取您的token，然后在config目录中的test_account.json中配置回测系统的佣金率和最低佣金。
 3.在config目录中的test_mainlab.json中，配置您的数据、环境、模型等。
+4.启动后端服务器：
+```shell
+cd backend
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+#### 前端
+5.安装并运行Web界面：
+```shell
+cd frontend
+npm install
+npm run serve
+```
+然后在浏览器中打开 http://localhost:8080
+
+#### 命令行
 4.开始训练FSRL。
 ```shell
 python -u run.py --task_name=hDJIADQN --env_type=train --start_time=20101201 --end_time=20210101

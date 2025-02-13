@@ -83,9 +83,26 @@ Afterwards, install ta_lib. Make sure to select the appropriate ta_lib installat
  
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
 ### 🚀 Quick Start
+#### Backend
 1.Configure global_config.json in the config directory, mainly to set up your email information and other settings.
 2.Register an account on the official Tushare website, retrieve your token, and then configure the commission rate and minimum commission for the backtest system in test_account.json located in the config directory.
 3.Configure your data, environment, model, etc. in test_mainlab.json, also located in the config directory.
+4.Start the backend server:
+```shell
+cd backend
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+#### Frontend
+5.Install and run the web interface:
+```shell
+cd frontend
+npm install
+npm run serve
+```
+Then open http://localhost:8080 in your browser.
+
+#### Command Line
 4.Begin training FSRL.
 ```shell
 python -u run.py --task_name=hDJIADQN\

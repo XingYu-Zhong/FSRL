@@ -55,8 +55,7 @@ class AlgoCenter:
             self.vf_coef = float(alog_parameters['vf_coef']) if 'vf_coef' in alog_parameters else 0.5
             self.max_grad_norm = float(
                 alog_parameters['max_grad_norm']) if 'max_grad_norm' in alog_parameters else 0.5
-            alog_parameters['use_sde'] = alog_parameters['use_sde'] == "True"
-            self.use_sde = alog_parameters['use_sde'] if 'use_sde' in alog_parameters else False
+            self.use_sde = alog_parameters.get('use_sde', False) == 'True'
             self.sde_sample_freq = int(
                 alog_parameters['sde_sample_freq']) if 'sde_sample_freq' in alog_parameters else -1
             self.target_kl = alog_parameters['target_kl'] if 'target_kl' in alog_parameters else None

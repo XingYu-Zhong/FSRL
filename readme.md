@@ -12,7 +12,7 @@
 
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
-*Read this in other languages: [English](readme.md), [中文](readme_zh.md).*
+*Read this in other languages: [English](readme.md), [中文](readme_zh.md), [日本語](readme_ja.md).*
 
 FSRL (Financial Strategy Reinforcement Learning) is the first open-source framework capable of dynamic switching among multiple strategies.🔥
 
@@ -81,7 +81,10 @@ pip install -r requirements.txt
 ```
 Afterwards, install ta_lib. Make sure to select the appropriate ta_lib installation according to your specific environment.
  
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
+https://ta-lib.github.io/ta-lib-python/install.html
+
+
+
 ### 🚀 Quick Start
 #### Backend
 1.Configure global_config.json in the config directory, mainly to set up your email information and other settings.

@@ -57,7 +57,10 @@ class MainLab:
             model.learn(total_timesteps=int(self.load_time_steps), callback=reward_callback)
         else:
             total_timesteps = self.mainlab_config.total_timesteps
-            model.learn(total_timesteps=total_timesteps, callback=reward_callback)
+            try:
+                model.learn(total_timesteps=total_timesteps, callback=reward_callback)
+            except Exception as e:
+                logger.error(f"Error occurred during model training: {e}")
         model_path = os.path.join(os.path.join(os.path.dirname(os.path.dirname(__file__)), "resultmodel"),self.task_name)
         model.save(model_path)
         email_server(emailContext=self.task_name+" model is save",mail_host=self.mainlab_config.mail_host,mail_user=self.mainlab_config.mail_user,mail_pass=self.mainlab_config.mail_pass,receivers=self.mainlab_config.receivers)

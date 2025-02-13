@@ -73,8 +73,7 @@ class EnvStrategyTrain(gym.Env):
         self.obs_day_num = int(obs_day_num)
         self.obs_pca_num = int(obs_pca_num)
         self.is_train_random = is_train_random
-
-        if is_discrete:
+        if is_discrete=="True":
             self.action_space = spaces.Discrete(self.strategy_num)
         else:
             self.action_space = spaces.Box(

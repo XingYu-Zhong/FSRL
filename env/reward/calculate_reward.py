@@ -56,8 +56,8 @@ class CalReward:
             weights = [0.09, 0.06, 0.65, 0.05, 0.05]  # 默认权重分配
 
         # 计算收益率
+        df['value'] = df['value'].infer_objects(copy=False)
         df['return'] = df['value'].pct_change()
-
         # 年化收益率和年化波动率
         annualized_return = np.mean(df['return']) * 252
         annualized_volatility = np.std(df['return']) * np.sqrt(252)
@@ -76,8 +76,20 @@ class CalReward:
         total_return = (df['value'].iloc[-1] / df['value'].iloc[0]) - 1
 
         indicators = [sharpe_ratio, max_drawdown, total_return, annualized_return, annualized_volatility]
+        print(f'indicators:{indicators}')
 
         # 计算综合评分
         score = sum(w * i for w, i in zip(weights, indicators))
+        print(f'indicators score:{score}')
 
+        return score
+    def calculate_score(self,df):
+        """
+        计算得分：df的value的最后一个值减去第一个值
+        :param df: 包含value列的DataFrame
+        :return: 计算得到的分数
+        """
+        if df.empty:
+            return 0
+        score = df['value'].iloc[-1] - df['value'].iloc[0]
         return score

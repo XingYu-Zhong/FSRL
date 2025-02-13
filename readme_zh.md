@@ -12,7 +12,7 @@
 
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
-*此文档其他语言版本： [English](readme.md), [中文](readme_zh.md).*
+*此文档其他语言版本： [English](readme.md), [中文](readme_zh.md), [日本語](readme_ja.md).*
 
 金融策略强化学习（FSRL）是首个能动态切换多种策略的开源框架。🔥
 
@@ -80,7 +80,9 @@ pip install -r requirements.txt
 ```
 接下来，安装ta_lib。根据您的具体环境选择合适的ta_lib安装。
 
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
+https://ta-lib.github.io/ta-lib-python/install.html
+
+
 
 ### 🚀 快速开始
 #### 后端
@@ -106,10 +108,33 @@ npm run serve
 4.开始训练FSRL。
 ```shell
 python -u run.py --task_name=hDJIADQN --env_type=train --start_time=20101201 --end_time=20210101
+
+python -u run.py --task_name=h000016DQN --env_type=train --start_time=20101201 --end_time=20210101
+
+python -u run.py --task_name=h000300DQN --env_type=train --start_time=20101201 --end_time=20210101
+
+python -u run.py --task_name=h000905DQN --env_type=train --start_time=20101201 --end_time=20210101
+#5Strategy
+python -u run.py --task_name=h000016DQN5Strategy --env_type=train --start_time=20101201 --end_time=20210101
+
+python -u run.py --task_name=h000300DQN5Strategy --env_type=train --start_time=20101201 --end_time=20210101
+
+python -u run.py --task_name=h000905DQN5Strategy --env_type=train --start_time=20101201 --end_time=20210101
+
 ```
 如果在国内要访问美股数据，需要加入proxy
 ```shell
 python -u run.py --task_name=hDJIADQN --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
+
+python -u run.py --task_name=hGSPCDQN --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
+
+python -u run.py --task_name=hIXICDQN --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
+#5Strategy
+python -u run.py --task_name=hDJIADQN5Strategy --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
+
+python -u run.py --task_name=hGSPCDQN5Strategy --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
+
+python -u run.py --task_name=hIXICDQN5Strategy --env_type=train --start_time=20101201 --end_time=20210101 --proxy=10809
 ```
 5.训练完成后，测试模型。
 ```shell
